@@ -28,7 +28,8 @@ Node *InsertAtLast(Node *head, int data)
 {
     Node *ptr = new Node(data);
     Node *p = head;
-    if (p == nullptr) {
+    if (p == nullptr)
+    {
         return ptr;
     }
     while (p->next != nullptr) // Fixing the loop to stop at the last node
@@ -42,7 +43,8 @@ Node *InsertAtLast(Node *head, int data)
 // Insert after a given node
 Node *InsertAfterNode(Node *head, Node *prevNode, int data)
 {
-    if (prevNode == nullptr) {
+    if (prevNode == nullptr)
+    {
         cout << "The given previous node cannot be NULL";
         return head;
     }
@@ -66,32 +68,83 @@ int LinkedListLen(Node *head)
 }
 
 // Insert in between at a specific position
-void InsertInBetween(Node *head, int pos, int data)
+Node *InsertInBetween(Node *head, int pos, int data)
 {
-    if (pos <= 0) {
+    if (pos <= 0)
+    {
         cout << "Position should be greater than 0";
-        return;
+        return head;
     }
     Node *ptr = new Node(data);
     Node *p = head;
     int count = 1; // start from 1 for easier positioning
+    if (pos == 1)
+    {
+        head = InsertAtFirst(head, data);
+        return head;
+    }
     while (count != pos - 1 && p != nullptr)
     {
         p = p->next;
         count++;
     }
-    if (p == nullptr) {
-        cout << "Position is beyond the length of the list";
-        return;
+    if (p == nullptr)
+    {
+        cout << "Position is beyond the length of the list or list doesnt exists \n";
+        return head;
     }
     ptr->next = p->next;
     p->next = ptr;
+    return head;
+}
+
+void LinkedListTraverse(Node *head)
+{
+    if (head == nullptr)
+    {
+        cout << "you dog" << endl;
+        return;
+    }
+    Node *start = head;
+    while (start->next != nullptr)
+    {
+        cout << "element : " << start->data << endl;
+        start = start->next;
+    }
 }
 
 int main()
 {
     Node *head = nullptr; // Initialize head pointer
-    head = InsertAtFirst(head, 10); // Example usage
+    head = InsertAtFirst(head, 80);
+    int a;
 
+    cout << endl;
+    char continueloop = 'y';
+    while (continueloop == 'y')
+    {
+        cout << "the available operations are 1:insert  2:delete 3:display : ";
+        cin >> a;
+        switch (a)
+        {
+        case 1:
+            int pos, data;
+            cout << "enter the position of data entry : ";
+            cin >> pos;
+            cout << "enter data : ";
+            cin >> data;
+            InsertInBetween(head, pos, data);
+            break;
+        case 2:
+            cout << "not available right now" << endl;
+            break;
+        case 3:
+            LinkedListTraverse(head);
+            break;
+        }
+        cout << "wanna continue y/n  : ";
+        cin >> continueloop;
+        cout << endl;
+    }
     return 0;
 }
