@@ -113,38 +113,42 @@ void LinkedListTraverse(Node *head)
     }
 }
 
-
-Node* deleteLinked(Node* head , int pos){
-        Node* prev;
-        Node* temp = head;
-        if(head==nullptr){
-            return nullptr;
-        }
-        if(pos < 1){
-            cout << "you dog" << endl;
-        }
-        if(temp == 1){
-            head = temp->next;
-            free(temp);
-            return head;
-        }
-        int i;
-        while(i != pos){
-            prev = temp;//staying previous
-            temp = temp->next;//goin next
-            i++;
-
-        }
-        if(temp != nullptr){
-            prev->next = temp->next;
-            free(temp);
-        }
-        else{
-            cout<< "you dog" << endl;
-        }
+Node *deleteLinked(Node *head, int pos)
+{
+    Node *prev;
+    Node *temp = head;
+    if (head == nullptr)
+    {
+        return nullptr;
+    }
+    if (pos < 1)
+    {
+        cout << "you dog" << endl;
+    }
+    if (temp == 1)
+    {
+        head = temp->next;
+        free(temp);
         return head;
+    }
+    int i;
+    while (i != pos)
+    {
+        prev = temp;       // staying previous
+        temp = temp->next; // goin next
+        i++;
+    }
+    if (temp != nullptr)
+    {
+        prev->next = temp->next;
+        free(temp);
+    }
+    else
+    {
+        cout << "you dog" << endl;
+    }
+    return head;
 }
-
 
 int main()
 {
