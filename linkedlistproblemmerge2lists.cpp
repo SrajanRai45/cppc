@@ -41,10 +41,10 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
             temp1 = temp1->next;
         }
     }
-    while(temp1 !=nullptr){
+    if(temp1 !=nullptr){
         buffer->next = temp1;
     }
-    while(temp2 !=nullptr){
+    if(temp2 !=nullptr){
         buffer->next = temp2;
     }
     return head->next;
