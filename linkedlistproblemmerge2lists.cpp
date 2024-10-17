@@ -32,7 +32,7 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
     }
 
     while(temp1 != nullptr && temp2 != nullptr){
-        if(temp1->val > temp2->val){
+        if(temp1->val >= temp2->val){
             buffer->next = temp2;
             temp2 = temp2->next;
 
@@ -40,6 +40,7 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
             buffer->next = temp1;
             temp1 = temp1->next;
         }
+        buffer = buffer->next;
     }
     if(temp1 !=nullptr){
         buffer->next = temp1;
