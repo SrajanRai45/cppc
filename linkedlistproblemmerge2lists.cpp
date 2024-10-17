@@ -76,4 +76,5 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
         buffer->next = temp2;
         temp2 = temp2->next;
     }
+    return head->next;
 }
