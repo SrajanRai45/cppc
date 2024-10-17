@@ -6,7 +6,7 @@ class ListNode
 {
 public:
     int val;
-    Node *next;
+    ListNode *next;
 
     ListNode(int x)
     {
@@ -16,63 +16,36 @@ public:
 };
 
 ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
-{   ListNode *temp1 = list1;
+{
+    ListNode *head = new ListNode(0);
+    ListNode *temp1 = list1;
     ListNode *temp2 = list2;
-    ListNode *p1, *p2, *buffer , *head;
+    ListNode *buffer = head;
 
-    if (temp1 == nullptr && temp2 == nullptr)
+    if (temp1 == nullptr)
     {
-        return nullptr;
+        return temp2;
     }
-    else if (temp1 == nullptr && temp2 != nullptr)
-        ;
+    if (temp2 == nullptr)
     {
-        return list2;
-    }
-    else if (temp1 != nullptr && temp2 == nullptr);
-    {
-        return list1;
+        return temp1;
     }
 
-    while (list1 && list2)
-    {
-        p1 = temp1;
-        p2 = temp2;
-        if (temp1->val > temp2->val)
-        {   
-            if(temp1==list1){
-                head->next = temp2;
-            }
-            temp1 = temp1->next;
+    while(temp1 != nullptr && temp2 != nullptr){
+        if(temp1->val > temp2->val){
+            buffer->next = temp2;
             temp2 = temp2->next;
 
-            buffer->next = p2;
-            p2->next = p1;
-            p1->next = nullptr;
-            buffer = p1;
-        }
-        else
-        {   if(temp1==list1){
-                head->next = temp1;
-            }
+        }else{
+            buffer->next = temp1;
             temp1 = temp1->next;
-            temp2 = temp2->next;
-
-            buffer->next = p1;
-            p1->next = p2;
-            p2->next = nullptr;
-            buffer = p2;
         }
     }
-    while (temp1->next != nullptr)
-    {
+    while(temp1 !=nullptr){
         buffer->next = temp1;
-        temp1 = temp1->next;
     }
-    while (temp2->next != nullptr)
-    {
+    while(temp2 !=nullptr){
         buffer->next = temp2;
-        temp2 = temp2->next;
     }
     return head->next;
 }
