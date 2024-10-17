@@ -16,7 +16,9 @@ public:
 };
 
 ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
-{
+{   ListNode *temp1 = list1;
+    ListNode *temp2 = list2;
+    ListNode *p1, *p2, *buffer , *head;
 
     if (temp1 == nullptr && temp2 == nullptr)
     {
