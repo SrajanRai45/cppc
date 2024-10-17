@@ -34,14 +34,10 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
         return list1;
     }
 
-    ListNode *temp1 = list1;
-    ListNode *temp2 = list2;
-    ListNode *p1, *p2, *buffer , *head;
-
     while (list1 && list2)
     {
-        temp1 = p1;
-        temp2 = p2;
+        p1 = temp1;
+        p2 = temp2;
         if (temp1->val > temp2->val)
         {   
             if(temp1==list1){
